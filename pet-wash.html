@@ -1239,6 +1239,10 @@
         </div>
         <form class="form" id="appointmentForm">
           <div class="field">
+            <label for="contactName">联系人</label>
+            <input id="contactName" type="text" placeholder="请输入联系人姓名" required>
+          </div>
+          <div class="field">
             <label for="petType">宠物类型</label>
             <select id="petType" required>
               <option value="">请选择</option>
@@ -1328,8 +1332,9 @@
       const petSize = document.querySelector("#petSize").value;
       const service = document.querySelector("#service").value;
       const date = document.querySelector("#date").value;
+      const contactName = document.querySelector("#contactName").value.trim();
 
-      note.textContent = `已生成预约草稿：${date}，${petSize}${petType}，${service}。请通过电话或微信确认最终到店时间。`;
+      note.textContent = `已生成${contactName}的预约草稿：${date}，${petSize}${petType}，${service}。请通过电话或微信确认最终到店时间。`;
     });
   </script>
 </body>
