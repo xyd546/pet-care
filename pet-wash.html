@@ -726,13 +726,104 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .reviews-carousel {
+      position: relative;
+    }
+
+    .reviews-viewport {
+      overflow: hidden;
+      margin: 0 -8px;
+      padding: 0 8px;
+    }
+
     .reviews {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
+      gap: 0;
+      transition: transform 420ms ease;
+    }
+
+    .review {
+      flex: 0 0 33.333%;
+      padding: 0 8px;
+    }
+
+    .review > .card {
+      height: 100%;
+    }
+
+    .review-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f2a24a;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    .review-rating span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .review p {
+      margin: 16px 0 0;
     }
 
     .review strong {
       display: block;
       margin-top: 18px;
+    }
+
+    .reviews-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .review-nav {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--blue-dark);
+      background: #fff;
+      font: inherit;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .review-nav:hover,
+    .review-nav:focus-visible {
+      color: #fff;
+      background: var(--blue-dark);
+      outline: none;
+    }
+
+    .reviews-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .review-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #bfd5d9;
+      cursor: pointer;
+    }
+
+    .review-dot.active {
+      width: 22px;
+      border-radius: 8px;
+      background: var(--blue-dark);
     }
 
     .booking-section {
@@ -857,6 +948,10 @@
       .price-grid,
       .reviews {
         grid-template-columns: 1fr;
+      }
+
+      .review {
+        flex-basis: 100%;
       }
 
       .section-head {
@@ -1208,19 +1303,58 @@
           <h2>附近宠物主人的真实感反馈。</h2>
           <p>评价文案可后续替换成少爷门店自己的真实内容。</p>
         </div>
-        <div class="grid reviews">
-          <article class="card review">
-            <p>“我家狗很怕吹风，店员会分段休息，洗完没有发抖，回家也不躲人。”</p>
-            <strong>可乐主人</strong>
-          </article>
-          <article class="card review">
-            <p>“价格提前说清楚，毛结哪里需要处理也会先拍照确认，这点很放心。”</p>
-            <strong>糯米主人</strong>
-          </article>
-          <article class="card review">
-            <p>“猫咪第一次洗护，本来很担心，约了安静时段，整个过程比预期顺利。”</p>
-            <strong>团子主人</strong>
-          </article>
+        <div class="reviews-carousel" data-reviews-carousel aria-label="用户评价轮播">
+          <div class="reviews-viewport">
+            <div class="reviews">
+              <article class="review">
+                <div class="card">
+                  <div class="review-rating" aria-label="评分 5.0 分">★★★★★ <span>5.0</span></div>
+                  <p>“我家狗很怕吹风，店员会分段休息，洗完没有发抖，回家也不躲人。”</p>
+                  <strong>可乐主人</strong>
+                </div>
+              </article>
+              <article class="review">
+                <div class="card">
+                  <div class="review-rating" aria-label="评分 5.0 分">★★★★★ <span>5.0</span></div>
+                  <p>“价格提前说清楚，毛结哪里需要处理也会先拍照确认，这点很放心。”</p>
+                  <strong>糯米主人</strong>
+                </div>
+              </article>
+              <article class="review">
+                <div class="card">
+                  <div class="review-rating" aria-label="评分 5.0 分">★★★★★ <span>5.0</span></div>
+                  <p>“猫咪第一次洗护，本来很担心，约了安静时段，整个过程比预期顺利。”</p>
+                  <strong>团子主人</strong>
+                </div>
+              </article>
+              <article class="review">
+                <div class="card">
+                  <div class="review-rating" aria-label="评分 4.9 分">★★★★★ <span>4.9</span></div>
+                  <p>“美容师会先问清楚想保留的毛型，剪完很自然，接送时还会提醒皮肤护理。”</p>
+                  <strong>布丁主人</strong>
+                </div>
+              </article>
+              <article class="review">
+                <div class="card">
+                  <div class="review-rating" aria-label="评分 5.0 分">★★★★★ <span>5.0</span></div>
+                  <p>“预约时间准时，店里没有很重的香味。洗完毛很蓬松，耳朵也清理得很干净。”</p>
+                  <strong>奶盖主人</strong>
+                </div>
+              </article>
+              <article class="review">
+                <div class="card">
+                  <div class="review-rating" aria-label="评分 4.9 分">★★★★★ <span>4.9</span></div>
+                  <p>“老年犬洗护会特别照顾关节，吹毛速度也会放慢。整个过程很细致，值得再来。”</p>
+                  <strong>豆包主人</strong>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="reviews-controls">
+            <button class="review-nav" type="button" data-review-prev aria-label="查看上一组评价">‹</button>
+            <div class="reviews-dots" data-review-dots aria-label="评价页码"></div>
+            <button class="review-nav" type="button" data-review-next aria-label="查看下一组评价">›</button>
+          </div>
         </div>
       </div>
     </section>
@@ -1321,6 +1455,78 @@
     carouselDots.forEach((dot) => {
       dot.addEventListener("click", () => setCarouselSlide(Number(dot.dataset.carouselDot)));
     });
+
+    const reviewsCarousel = document.querySelector("[data-reviews-carousel]");
+    const reviewsTrack = reviewsCarousel.querySelector(".reviews");
+    const reviewCards = Array.from(reviewsCarousel.querySelectorAll(".review"));
+    const reviewDots = reviewsCarousel.querySelector("[data-review-dots]");
+    const reviewPrev = reviewsCarousel.querySelector("[data-review-prev]");
+    const reviewNext = reviewsCarousel.querySelector("[data-review-next]");
+    const compactReviews = window.matchMedia("(max-width: 920px)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reviewIndex = 0;
+    let reviewTimer;
+
+    function reviewsPerView() {
+      return compactReviews.matches ? 1 : 3;
+    }
+
+    function reviewPageCount() {
+      return Math.ceil(reviewCards.length / reviewsPerView());
+    }
+
+    function buildReviewDots() {
+      reviewDots.innerHTML = "";
+      Array.from({ length: reviewPageCount() }, (_, index) => {
+        const dot = document.createElement("button");
+        dot.className = "review-dot";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `查看第 ${index + 1} 组评价`);
+        dot.addEventListener("click", () => setReviewSlide(index));
+        reviewDots.appendChild(dot);
+      });
+    }
+
+    function setReviewSlide(index) {
+      const pages = reviewPageCount();
+      reviewIndex = (index + pages) % pages;
+      reviewsTrack.style.transform = `translateX(-${reviewIndex * (100 / reviewsPerView())}%)`;
+      Array.from(reviewDots.children).forEach((dot, dotIndex) => {
+        const active = dotIndex === reviewIndex;
+        dot.classList.toggle("active", active);
+        dot.setAttribute("aria-current", active ? "true" : "false");
+      });
+    }
+
+    function resetReviewTimer() {
+      window.clearInterval(reviewTimer);
+      if (!reducedMotion.matches) {
+        reviewTimer = window.setInterval(() => setReviewSlide(reviewIndex + 1), 5000);
+      }
+    }
+
+    function refreshReviews() {
+      reviewIndex = Math.min(reviewIndex, reviewPageCount() - 1);
+      buildReviewDots();
+      setReviewSlide(reviewIndex);
+      resetReviewTimer();
+    }
+
+    reviewPrev.addEventListener("click", () => {
+      setReviewSlide(reviewIndex - 1);
+      resetReviewTimer();
+    });
+    reviewNext.addEventListener("click", () => {
+      setReviewSlide(reviewIndex + 1);
+      resetReviewTimer();
+    });
+    reviewsCarousel.addEventListener("mouseenter", () => window.clearInterval(reviewTimer));
+    reviewsCarousel.addEventListener("mouseleave", resetReviewTimer);
+    reviewsCarousel.addEventListener("focusin", () => window.clearInterval(reviewTimer));
+    reviewsCarousel.addEventListener("focusout", resetReviewTimer);
+    compactReviews.addEventListener("change", refreshReviews);
+    reducedMotion.addEventListener("change", resetReviewTimer);
+    refreshReviews();
 
     const form = document.querySelector("#appointmentForm");
     const note = document.querySelector("#formNote");
