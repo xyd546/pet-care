@@ -1405,8 +1405,8 @@
             </select>
           </div>
           <div class="field">
-            <label for="date">期望日期</label>
-            <input id="date" type="date" required>
+            <label for="date">期望到店日期</label>
+            <input id="date" type="datetime-local" value="2026-06-23T09:30" required>
           </div>
           <div class="field full">
             <label for="phone">联系方式</label>
@@ -1540,7 +1540,9 @@
       const date = document.querySelector("#date").value;
       const contactName = document.querySelector("#contactName").value.trim();
 
-      note.textContent = `已生成${contactName}的预约草稿：${date}，${petSize}${petType}，${service}。请通过电话或微信确认最终到店时间。`;
+      const formattedDate = date ? date.replace("T", " ") : "";
+
+      note.textContent = `已生成${contactName}的预约草稿：${formattedDate}，${petSize}${petType}，${service}。请通过电话或微信确认最终到店时间。`;
     });
   </script>
 </body>
